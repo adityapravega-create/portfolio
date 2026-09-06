@@ -1,0 +1,130 @@
+/* ============================================================
+   Responsive layers.
+   All rules are scoped with :not(.force-desktop) on <body> so the
+   "Switch to Desktop View" toggle can disable them wholesale.
+   ============================================================ */
+
+/* ---------- Large desktop trim ---------- */
+@media (max-width: 1400px) {
+  body:not(.force-desktop) { --pad-x: 44px; }
+  body:not(.force-desktop) .nav-links { gap: 13px; }
+  body:not(.force-desktop) .nav-links a { font-size: 11px; }
+}
+
+/* ---------- Laptop ---------- */
+@media (max-width: 1180px) {
+  body:not(.force-desktop) { --pad-x: 34px; }
+  body:not(.force-desktop) .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  body:not(.force-desktop) .tools-grid { grid-template-columns: repeat(2, 1fr); }
+  body:not(.force-desktop) .proj-grid { grid-template-columns: repeat(2, 1fr); }
+  body:not(.force-desktop) .ach-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ---------- Tablet / collapse nav ---------- */
+@media (max-width: 980px) {
+  body:not(.force-desktop) .nav-burger { display: block; }
+
+  body:not(.force-desktop) .nav-links {
+    position: fixed; top: var(--nav-h); left: 0; right: 0;
+    background: rgba(10, 14, 24, 0.985);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    flex-direction: column; align-items: stretch; gap: 0;
+    padding: 8px 0 16px; border-bottom: 2px solid var(--red);
+    max-height: calc(100vh - var(--nav-h)); overflow-y: auto;
+    transform: translateY(-12px); opacity: 0;
+    pointer-events: none; transition: opacity 0.22s, transform 0.22s;
+  }
+  body:not(.force-desktop).menu-open .nav-links {
+    transform: none; opacity: 1; pointer-events: auto;
+  }
+  body:not(.force-desktop) .nav-links li { border-bottom: 1px solid var(--rule); }
+  body:not(.force-desktop) .nav-links a {
+    display: block; padding: 13px var(--pad-x); font-size: 13px;
+    border-bottom: none; border-left: 3px solid transparent;
+  }
+  body:not(.force-desktop) .nav-links a.active {
+    border-bottom: none; border-left-color: var(--red);
+    background: rgba(217, 16, 32, 0.08);
+  }
+  body:not(.force-desktop) .nav-cta {
+    margin: 10px var(--pad-x) 0; text-align: center;
+    padding: 12px !important; border-left: none !important;
+  }
+
+  body:not(.force-desktop) #hero { grid-template-columns: 1fr; min-height: 0; }
+  body:not(.force-desktop) .hero-left { order: 2; padding: 40px var(--pad-x) 48px; }
+  body:not(.force-desktop) .hero-right { order: 1; height: 44vh; min-height: 280px; }
+  body:not(.force-desktop) .hero-right img { object-position: center 22%; }
+  body:not(.force-desktop) .hero-right-overlay {
+    background: linear-gradient(180deg, rgba(20, 28, 46, 0.35) 0%, transparent 40%, rgba(10, 14, 24, 0.92) 100%);
+  }
+  body:not(.force-desktop) .scroll-hint { display: none; }
+
+  body:not(.force-desktop) .intro-split { grid-template-columns: 1fr; gap: 26px; }
+  body:not(.force-desktop) .intro-img-stack { grid-template-columns: 1fr 1fr; }
+  body:not(.force-desktop) .exp-cols,
+  body:not(.force-desktop) .two-col,
+  body:not(.force-desktop) .edu-grid { grid-template-columns: 1fr; }
+  body:not(.force-desktop) .panel-img { min-height: 220px; max-height: 300px; }
+  body:not(.force-desktop) .ach-grid { grid-template-columns: repeat(2, 1fr); }
+  body:not(.force-desktop) .garrow { display: none; }
+  body:not(.force-desktop) .sec { padding-top: 56px; padding-bottom: 56px; }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 680px) {
+  body:not(.force-desktop) { --pad-x: 20px; font-size: 14.5px; }
+
+  body:not(.force-desktop) .hero-stats { grid-template-columns: 1fr 1fr; max-width: none; }
+  body:not(.force-desktop) .sb:nth-child(2) { border-right: none; }
+  body:not(.force-desktop) .sb:nth-child(1),
+  body:not(.force-desktop) .sb:nth-child(2) { border-bottom: 1px solid var(--rule); }
+  body:not(.force-desktop) .hbtns .btn { flex: 1 1 100%; text-align: center; }
+  body:not(.force-desktop) .hero-quote { max-width: none; }
+
+  body:not(.force-desktop) .gitem { flex: 0 0 78vw; }
+  body:not(.force-desktop) .gstrip { padding-bottom: 30px; gap: 10px; }
+  body:not(.force-desktop) .skills-grid,
+  body:not(.force-desktop) .tools-grid,
+  body:not(.force-desktop) .proj-grid { grid-template-columns: 1fr; }
+  body:not(.force-desktop) .img-row.c3 { grid-template-columns: 1fr; }
+  body:not(.force-desktop) .img-row-item { height: 210px; }
+  body:not(.force-desktop) .intro-img-stack { grid-template-columns: 1fr; }
+  body:not(.force-desktop) .ach-grid { grid-template-columns: 1fr; }
+  body:not(.force-desktop) .ach-card { padding: 16px; }
+
+  body:not(.force-desktop) .exp-card,
+  body:not(.force-desktop) .panel,
+  body:not(.force-desktop) .panel2,
+  body:not(.force-desktop) .sk-card,
+  body:not(.force-desktop) .edu-card { padding: 17px; }
+
+  body:not(.force-desktop) .ct-links { flex-direction: column; }
+  body:not(.force-desktop) footer { flex-direction: column; align-items: flex-start; gap: 8px; }
+
+  body:not(.force-desktop) #lightbox { padding: 54px 12px 84px; }
+  body:not(.force-desktop) .lb-nav { width: 38px; height: 56px; font-size: 18px; }
+  body:not(.force-desktop) .lb-nav.prev { left: 6px; }
+  body:not(.force-desktop) .lb-nav.next { right: 6px; }
+  body:not(.force-desktop) #top-btn { right: 14px; bottom: 14px; }
+}
+
+/* ---------- The desktop-view toggle button ---------- */
+#view-toggle {
+  display: none;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text3);
+  background: rgba(255, 255, 255, 0.04); border: 1px solid var(--rule);
+  padding: 9px 14px; cursor: pointer; transition: color 0.2s, border-color 0.2s;
+}
+#view-toggle:hover { color: #fff; border-color: var(--blue-lt); }
+
+/* Shown on small screens, and always shown once desktop view is forced
+   (so the user can get back out of it). */
+@media (max-width: 980px) { #view-toggle { display: inline-block; } }
+body.force-desktop #view-toggle { display: inline-block; }
+
+/* When desktop view is forced, the page is a fixed-width desktop layout
+   the browser can pinch-zoom, exactly like the friend's site. */
+body.force-desktop { min-width: 1280px; overflow-x: auto; }
+body.force-desktop .nav-burger { display: none; }
